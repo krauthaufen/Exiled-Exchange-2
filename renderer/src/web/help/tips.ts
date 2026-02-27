@@ -7,11 +7,12 @@ export function randomTip(): number {
   return Math.floor(Math.random() * TIP_COUNT) + 1;
 }
 
+// Use literal keys to avoid circular import (Config → widget-registry → PriceCheckWindow → CheckedItem → tips → Config)
 export const TIP_FREQUENCY_MAP: Record<TipsFrequency, number> = {
-  [TipsFrequency.Always]: 1,
-  [TipsFrequency.MoreOften]: 7,
-  [TipsFrequency.Normal]: 20,
-  [TipsFrequency.Rarely]: 50,
-  [TipsFrequency.VeryRarely]: 100,
-  [TipsFrequency.Never]: -1,
+  1: 1,   // Always
+  2: 7,   // MoreOften
+  3: 20,  // Normal
+  4: 50,  // Rarely
+  5: 100, // VeryRarely
+  6: -1,  // Never
 };

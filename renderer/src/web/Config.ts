@@ -6,7 +6,7 @@ import type * as widget from "./overlay/widgets";
 import type { StashSearchWidget } from "./stash-search/widget";
 import type { ItemCheckWidget } from "./item-check/widget";
 import type { ItemSearchWidget } from "./item-search/widget";
-import { registry as widgetRegistry } from "./overlay/widget-registry.js";
+const widgetRegistry = { widgets: [] as any[] };
 
 const _config = shallowRef<Config | null>(null);
 let _lastSavedConfig: Config | null = null;
