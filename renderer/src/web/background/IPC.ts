@@ -22,7 +22,7 @@ class HostTransport {
       this.updateInfo.value = info;
     });
     await new Promise((resolve) => {
-      this.socket = new Sockette(`ws://${window.location.host}/events`, {
+      this.socket = new Sockette(`ws://${window.location.host}/plugins/ee2/events`, {
         onmessage: (e) => {
           this.selfDispatch(JSON.parse(e.data));
         },
@@ -63,7 +63,7 @@ class HostTransport {
   }
 
   async getConfig(): Promise<string | null> {
-    const response = await fetch("/config");
+    const response = await fetch("/plugins/ee2/config");
     const config = (await response.json()) as HostState;
     // TODO: refactor this
     this.version.value = config.version;
@@ -82,7 +82,7 @@ class HostTransport {
   }
 
   proxy: (typeof window)["fetch"] = async (url, init) => {
-    return await window.fetch(`/proxy/${url as string}`, init);
+    return await window.fetch(`/plugins/ee2/proxy/${url as string}`, init);
   };
 
   get isElectron() {

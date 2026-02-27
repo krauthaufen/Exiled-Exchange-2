@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  base: "/ee2/",
+  base: "/plugins/ee2/ee2/",
   build: {
     target: "esnext",
     assetsInlineLimit: 0,
